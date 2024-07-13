@@ -1,6 +1,5 @@
 {% set version = "1.4-1" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-softimpute
@@ -14,8 +13,7 @@ source:
   sha256: ea4c39831dee834204f6d6594aad6b937540ba4f2adf3f37fb4546844c234aec
 
 build:
-  merge_build_host: true  # [win]
-  number: 2
+  number: 3
 
   rpaths:
     - lib/R/lib/
@@ -24,8 +22,10 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}        # [not win]
+    - {{ stdlib("c") }}          # [not win]
     - {{ compiler('fortran') }}  # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ compiler('m2w64_fortran') }}        # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
@@ -41,7 +41,6 @@ requirements:
 
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-matrix
 
 test:
