@@ -1,4 +1,4 @@
-{% set version = "1.4-1" %}
+{% set version = "1.4-2" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -10,10 +10,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/softImpute_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/softImpute/softImpute_{{ version }}.tar.gz
-  sha256: ea4c39831dee834204f6d6594aad6b937540ba4f2adf3f37fb4546844c234aec
+  sha256: d091f332a7c1a14436681a2b59880a6dbcb7ccadb66d3c9acd07a7c53b622461
 
 build:
-  number: 4
+  number: 0
 
   rpaths:
     - lib/R/lib/
